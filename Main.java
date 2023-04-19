@@ -8,8 +8,6 @@ public class Main {
     Image out;
     
     out = Transform.arteASCII(img, nCol, nRow, ascii);
-    // Transform.negative(img);
-    //out = Transform.convolucao(img);
     out.saveToFile("result");
   }
 }

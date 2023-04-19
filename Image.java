@@ -83,23 +83,30 @@ public class Image {
 
   public void saveToFile(String filename) {
     try {
-      PrintWriter outfile = new PrintWriter(filename + ".pgm");
-      System.out.println("Escrevendo o arquivo: " + filename + ".pgm");
+      PrintWriter outfile = new PrintWriter(filename + ".txt");
+      System.out.println("Escrevendo o arquivo: " + filename + ".txt");
 
-      outfile.println("P2"); // Ascii PPM file
+      outfile.println("# ASCII IMAGE"); // Ascii PPM file
       outfile.println("# Image created by Image.java");
-      outfile.println(cols + " " + rows);
-      outfile.println(maxValue);
 
-      for (int count = 0, r = 0; r < rows; r++) {
+      // for (int count = 0, r = 0; r < rows; r++) {
+      //   for (int c = 0; c < cols; c++) {
+      //     outfile.print(pixels[r][c] + " ");
+      //     if (++count > 20) {
+      //       count = 0;
+      //       outfile.println("");
+      //     }
+      //   }
+      // }
+
+      for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
-          outfile.print(pixels[r][c] + " ");
-          if (++count > 20) {
-            count = 0;
-            outfile.println("");
-          }
+          char simbol = (char)pixels[r][c];
+          outfile.print(simbol);
         }
+        outfile.println("");
       }
+
       outfile.close();
     } catch (Exception e) {
       System.out.println(e.toString() + " erro no arquivo .PGM.");
