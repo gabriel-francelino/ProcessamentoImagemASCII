@@ -6,9 +6,10 @@ public class Main {
     int nRow = Integer.parseInt(args[2]);
     String ascii = args[3];
     Image out;
+    
     out = Transform.arteASCII(img, nCol, nRow, ascii);
     // Transform.negative(img);
-    out = Transform.convolucao(img);
+    //out = Transform.convolucao(img);
     out.saveToFile("result");
   }
 }

@@ -8,14 +8,24 @@ public class Transform {
     }
   }
 
-  public static Image arteASCII(Image In, int nCol, int nRow, String ascii){
-    Image Out = new Image(nCol, nRow, In.getMaxValue());
-    for (int i = 0; i < In.getNumRows(); i++) {
-      for (int j = 0; j < In.getNumCols(); j++) {
-        
+  public static Image arteASCII(Image in, int nCol, int nRow, String ascii){
+    int projRow = 0;
+    int projCol = 0;
+    int scale = 0;
+    Image out = new Image(nRow, nCol, in.getMaxValue());
+    for (int i = 0; i < nRow; i++) {
+      for (int j = 0; j < nCol; j++) {
+        if(projCol <= in.getNumCols() && projRow <= in.getNumRows()){
+          out.pixels[i][j] = in.pixels[projRow][projCol];
+          scale++;
+          System.out.println(scale);
+        }
+        projCol += in.getNumCols() / nCol;
       }
+      projCol = 0;
+      projRow += in.getNumRows() / nRow;
     }
-    return Out;
+    return out;
   }
 
   public static Image convolucao(Image In) {
