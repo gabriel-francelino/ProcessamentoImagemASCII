@@ -1,18 +1,18 @@
 public class Transform {
 
-  public static void negative(Image img) {
-    for (int i = 0; i < img.getNumRows(); i++) {
-      for (int j = 0; j < img.getNumCols(); j++) {
-        img.setPixel(i, j, img.getMaxValue() - img.getPixel(i, j));
-      }
-    }
-  }
-
+  /**
+   * Transform a .pgm image into an ASCII art
+   * @param in input image
+   * @param nCol number of columns
+   * @param nRow number of rows
+   * @param ascii string of characters to be used
+   * @return output image
+   */
   public static Image arteASCII(Image in, int nCol, int nRow, String ascii){
-    int projRow = 0;
-    int projCol = 0;
+    int projRow = 0;  // column projection
+    int projCol = 0;  // row projection
+    int scale = in.getMaxValue() / ascii.length(); // scale of the ascii characters
     Image out = new Image(nRow, nCol, in.getMaxValue());
-    int scale = in.getMaxValue() / ascii.length();
 
     for (int i = 0; i < nRow; i++) {
       for (int j = 0; j < nCol; j++) {
@@ -29,24 +29,6 @@ public class Transform {
       projCol = 0;
       projRow += in.getNumRows() / nRow;
     }
-
-
     return out;
-  }
-
-  public static Image convolucao(Image In) {
-    Image Out = new Image(In.getNumRows(), In.getNumCols(), In.getMaxValue());
-    for (int i = 1; i < In.getNumRows() - 1; i++) {
-      for (int j = 1; j < In.getNumCols() - 1; j++) {
-        int sum = 0;
-        for (int y = -1; y <= 1; y++) {
-          for (int x = -1; x <= 1; x++) {
-            sum += In.pixels[i + y][j + x];
-          }
-        }
-        Out.pixels[i][j] = sum / 9;
-      }
-    }
-    return Out;
   }
 }

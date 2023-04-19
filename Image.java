@@ -8,6 +8,12 @@ public class Image {
   private int maxValue;
   public int[][] pixels;
 
+  /**
+   * Constructor that creates an empty image
+   * @param rows number of rows
+   * @param cols number of columns
+   * @param maxValue maximum value of a pixel
+   */
   public Image(int rows, int cols, int maxValue) {
     this.rows = rows;
     this.cols = cols;
@@ -15,7 +21,10 @@ public class Image {
     pixels = new int[rows][cols];
   }
 
-  // Constructor, needs filename
+  /**
+   * Constructor that reads the input file
+   * @param filename name of file to read from
+   */
   public Image(String filename) {
     try {
       Scanner infile = new Scanner(new FileReader(filename + ".pgm"));
@@ -81,6 +90,10 @@ public class Image {
     return maxValue;
   }
 
+  /**
+   * Save image to file
+   * @param filename name of file to save to
+   */
   public void saveToFile(String filename) {
     try {
       PrintWriter outfile = new PrintWriter(filename + ".txt");
@@ -88,16 +101,6 @@ public class Image {
 
       outfile.println("# ASCII IMAGE"); // Ascii PPM file
       outfile.println("# Image created by Image.java");
-
-      // for (int count = 0, r = 0; r < rows; r++) {
-      //   for (int c = 0; c < cols; c++) {
-      //     outfile.print(pixels[r][c] + " ");
-      //     if (++count > 20) {
-      //       count = 0;
-      //       outfile.println("");
-      //     }
-      //   }
-      // }
 
       for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {

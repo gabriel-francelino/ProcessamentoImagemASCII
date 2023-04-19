@@ -1,7 +1,6 @@
 JAVAC = javac
 JAVA = java
 MAIN_CLASS = Main
-ARGS = arg1 arg2 arg3 args4
 
 all: compile 
 
