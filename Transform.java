@@ -5,7 +5,7 @@
 5 | Disciplina . : Processamento de Imagens
 6 | Professor. . : Luiz Eduardo da Silva
 7 | Aluno . . . .: Gabriel Francelino Nascimento
-8 | Data . . . . : ??/04/2023
+8 | Data . . . . : 02/05/2023
 9 +=============================================================*/
 
 public class Transform {
