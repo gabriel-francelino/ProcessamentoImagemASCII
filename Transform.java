@@ -29,7 +29,7 @@ public class Transform {
         if(projCol <= in.getNumCols() && projRow <= in.getNumRows()){
           out.pixels[i][j] = in.pixels[projRow][projCol];
           for(int s = 0; s < ascii.length(); s++){
-            if(out.pixels[i][j] >= s * scale && out.pixels[i][j] < (s + 1) * scale){
+            if(out.pixels[i][j] >= s * scale && out.pixels[i][j] <= (s + 1) * scale){
               out.pixels[i][j] = ascii.charAt(s);
             }
           }
