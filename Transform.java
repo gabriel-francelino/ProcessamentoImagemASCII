@@ -29,15 +29,18 @@ public class Transform {
         if(projCol <= in.getNumCols() && projRow <= in.getNumRows()){
           out.pixels[i][j] = in.pixels[projRow][projCol];
           for(int s = 0; s < ascii.length(); s++){
-            if(out.pixels[i][j] >= s * scale && out.pixels[i][j] <= (s + 1) * scale){
+            if(out.pixels[i][j] >= s * scale && out.pixels[i][j] < (s + 1) * scale){
               out.pixels[i][j] = ascii.charAt(s);
+            }
+            if(out.pixels[i][j] == in.getMaxValue()){
+              out.pixels[i][j] = ascii.charAt(ascii.length() - 1);
             }
           }
         }
-        projCol += in.getNumCols() / nCol;
+        projCol += (int)(in.getNumCols() / nCol);
       }
       projCol = 0;
-      projRow += in.getNumRows() / nRow;
+      projRow += (int)(in.getNumRows() / nRow);
     }
     return out;
   }
